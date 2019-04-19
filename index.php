@@ -6,6 +6,8 @@
  * Time: 2:16 PM
  */
 
+    // Start seesion
+    session_start();
     // Turn on error reporting
     ini_set('display_error', 1);
     error_reporting(E_ALL);
@@ -53,10 +55,17 @@
         echo "<a href='order'>Order a Pet</a>";
     });
 
-    $f3->route('GET /route', function()
+    $f3->route('GET /order', function()
     {
         $view = new Template();
         echo $view->render("views/form1.html");
+    });
+
+    $f3->route('POST /order2', function()
+    {
+        $_SESSION['animal'] = $_POST['animal'];
+        $view = new Template();
+        echo $view->render("views/form2.html");
     });
 
     // Run Fat-Free
