@@ -24,6 +24,27 @@
     {
         $pet = $param['pet'];
         echo "<h1>$pet</h1>";
+
+        switch ($pet)
+        {
+            case 'dog':
+                echo "<h3>Woof</h3>";
+                break;
+            case 'chicken':
+                echo "<h3>Cluck</h3>";
+                break;
+            case 'cat':
+                echo "<h3>Meow</h3>";
+                break;
+            case 'horse':
+                echo "<h3>Neigh</h3>";
+                break;
+            case 'cow':
+                echo "<h3>Moo</h3>";
+                break;
+            default:
+                $f3->error(404);
+        }
     });
 
     $f3->route('GET /', function()
