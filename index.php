@@ -26,5 +26,11 @@
         echo "<h1>$pet</h1>";
     });
 
+    $f3->route('GET /', function()
+    {
+        echo "<h1>My pets</h1>";
+        echo "<a href='order'>Order a Pet</a>";
+    });
+
     // Run Fat-Free
     $f3->run();
