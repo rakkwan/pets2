@@ -22,6 +22,9 @@
     // Turn on Fat-free error reporting
     $f3->set('DEBUG', 3);
 
+    // require validation file
+    require_once('model/validation-functions.php');
+
     // define a default route
     $f3->route('GET /@pet', function($f3, $param)
     {
