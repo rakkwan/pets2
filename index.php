@@ -59,8 +59,22 @@
         echo "<a href='order'>Order a Pet</a>";
     });
 
-    $f3->route('GET|POST /order', function()
+    $f3->route('GET|POST /order', function($f3)
     {
+        session_destroy();
+
+        if(isset($_POST['animal']))
+        {
+            $animal = $_POST['animal'];
+            if(validString($animal))
+            {
+                $_SESSION['animal'] = $animal;
+
+                $view = new Template();
+                echo $view->render("order2");
+            }
+        }
+
         $view = new Template();
         echo $view->render("views/form1.html");
     });
