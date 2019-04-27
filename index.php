@@ -86,7 +86,7 @@
 
     $f3->route('GET|POST /order2', function($f3)
     {
-        $_SESSION = array();
+        //$_SESSION = array();
         if (isset($_POST['color']))
         {
             $color = $_POST['color'];
