@@ -61,7 +61,7 @@
 
     $f3->route('GET|POST /order', function($f3)
     {
-        session_destroy();
+        $_SESSION = array();
 
         if(isset($_POST['animal']))
         {
