@@ -8,6 +8,7 @@
 
     // Start seesion
     session_start();
+
     // Turn on error reporting
     ini_set('display_error', 1);
     error_reporting(E_ALL);
@@ -54,7 +55,7 @@
         }
     });
 
-    $f3->route('GET|POST /', function()
+    $f3->route('GET /', function()
     {
         echo "<h1>My pets</h1>";
         echo "<a href='order'>Order a Pet</a>";
@@ -96,7 +97,7 @@
             }
             else
             {
-                $f3->set("errors['color']", "Please enter a color");
+                $f3->set("errors['color']", "Please enter a color.");
             }
         }
         $view = new Template();
@@ -110,7 +111,6 @@
         $view = new Template();
         echo $view->render("views/results.html");
     });
-
 
     // Run Fat-Free
     $f3->run();

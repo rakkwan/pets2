@@ -6,11 +6,11 @@
 </head>
 <body>
 
-<check if="{{ isset(@errors['color'])}}">
-    <p>{{ @errors['color']}}</p>
-
-</check>
 <form action="#" method="post">
+    <check if="{{ isset(@errors['color'])}}">
+        <p>{{ @errors['color']}}</p>
+
+    </check>
 
     <label>Color
         <select class="form-control" name="color" id="color">
