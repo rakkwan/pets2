@@ -5,14 +5,17 @@
     <title>Animal</title>
 </head>
 <body>
+
+<check if="{{ isset(@errors['animal'])}}">
+    <p>{{ @errors['animal']}}</p>
+
+</check>
 <form method="POST" action="#">
 
     <label>Animal
-        <input type="text" name="animal"></label>
+        <input type="text" name="animal" id="animal"></label>
 
     <input type="submit" value="Next">
-
-
 
 </form>
 

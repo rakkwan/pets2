@@ -6,11 +6,16 @@
 </head>
 <body>
 
+<check if="{{ isset(@errors['color'])}}">
+    <p>{{ @errors['color']}}</p>
+
+</check>
 <form action="#" method="post">
+
     <label>Color
         <select class="form-control" name="color" id="color">
             <option>--Select a color--</option>
-            <repeat group="{{ @color }}" value="{{ @colorOption}}">
+            <repeat group="{{ @colors }}" value="{{ @colorOption}}">
                 <option>{{ @colorOption }}</option>
             </repeat>
 

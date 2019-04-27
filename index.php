@@ -17,10 +17,11 @@
 
     // create an instance of the base class
     $f3 = Base::instance();
-    $f3->set('colors', array('pink', 'green', 'blue'));
 
     // Turn on Fat-free error reporting
     $f3->set('DEBUG', 3);
+
+    $f3->set('colors', array('pink', 'green', 'blue'));
 
     // require validation file
     require_once('model/validation-functions.php');
@@ -53,7 +54,7 @@
         }
     });
 
-    $f3->route('GET /', function()
+    $f3->route('GET|POST /', function()
     {
         echo "<h1>My pets</h1>";
         echo "<a href='order'>Order a Pet</a>";
@@ -82,19 +83,34 @@
         echo $view->render("views/form1.html");
     });
 
-    $f3->route('GET|POST /order2', function()
+    $f3->route('GET|POST /order2', function($f3)
     {
-        $_SESSION['animal'] = $_POST['animal'];
+        $_SESSION = array();
+        if (isset($_POST['color']))
+        {
+            $color = $_POST['color'];
+            if (validColor($color))
+            {
+                $_SESSION['color'] = $color;
+                $f3->reroute('/results');
+            }
+            else
+            {
+                $f3->set("errors['color']", "Please enter a color");
+            }
+        }
         $view = new Template();
         echo $view->render("views/form2.html");
     });
 
-    $f3->route('POST /results', function()
+
+    $f3->route('GET|POST /results', function()
     {
-        $_SESSION['color'] = $_POST['color'];
+       // $_SESSION['color'] = $_POST['color'];
         $view = new Template();
         echo $view->render("views/results.html");
     });
+
 
     // Run Fat-Free
     $f3->run();
