@@ -70,8 +70,11 @@
             {
                 $_SESSION['animal'] = $animal;
 
-                $view = new Template();
-                echo $view->render("order2");
+                $f3->reroute('/order2');
+            }
+            else
+            {
+                $f3->set("errors['animal']", "Please enter an animal.");
             }
         }
 

@@ -14,10 +14,9 @@ function validColor($color)
 
 function validString($string)
 {
-    if (!empty($string))
+    if (!empty($string) && is_string($string))
     {
         return true;
     }
-
     return false;
 }
